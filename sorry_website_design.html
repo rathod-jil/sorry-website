@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Aastha ❤️</title>
+<style>
+body{margin:0;font-family:Arial;background:linear-gradient(135deg,#ffd1dc,#ffe6eb);color:#333;overflow:hidden}
+nav{display:flex;justify-content:space-between;align-items:center;padding:15px 20px;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
+nav a{margin:0 10px;text-decoration:none;color:#ff4d6d;font-weight:bold;cursor:pointer}
+.section{display:none;padding:30px;text-align:center}
+.active{display:block}
+.card{background:#fff;padding:20px;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,0.1);margin:15px auto;max-width:500px}
+img{max-width:200px;border-radius:15px;margin:10px}
+button{padding:10px 20px;border:none;border-radius:20px;background:#ff4d6d;color:#fff;cursor:pointer}
+
+/* SLIDESHOW */
+.slideshow{max-width:300px;margin:20px auto;position:relative}
+.slide{display:none;width:100%;border-radius:15px}
+.active-slide{display:block}
+
+/* HEART ANIMATION */
+.heart{position:fixed;bottom:-10px;color:#ff4d6d;font-size:20px;animation:floatUp 5s linear infinite}
+@keyframes floatUp{0%{transform:translateY(0) scale(1);opacity:1}100%{transform:translateY(-100vh) scale(1.5);opacity:0}}
+
+/* POPUP */
+.popup{
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,0.6);
+display:flex;
+justify-content:center;
+align-items:center;
+visibility:hidden;
+}
+.popup-content{
+background:#fff;
+padding:30px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+animation:fadeIn 1s ease;
+}
+.popup h2{color:#ff4d6d}
+@keyframes fadeIn{from{opacity:0;transform:scale(0.8)}to{opacity:1;transform:scale(1)}}
+.show-popup{visibility:visible}
+</style>
+</head>
+<body>
+
+<nav>
+<div><b>For Aastha ❤️</b></div>
+<div>
+<a onclick="show('home')">Home</a>
+<a onclick="show('letter')">Letter</a>
+<a onclick="show('gallery')">Gallery</a>
+<a onclick="show('promise')">Promises</a>
+</div>
+</nav>
+
+<!-- POPUP -->
+<div id="popup" class="popup">
+<div class="popup-content">
+<h2>I Love You Aastha ❤️</h2>
+<p>Bebu, please mujhe maaf kar do 🥺<br>Tum meri sab kuch ho 💖</p>
+<button onclick="closePopup()">Close</button>
+</div>
+</div>
+
+<!-- HOME -->
+<div id="home" class="section active">
+<h1>Sorry Aastha... 🥺</h1>
+<div class="card">
+<p>Mujhse galti ho gayi... Bebu please mujhe maaf kar do ❤️<br>
+Tum meri life ka sabse important part ho.</p>
+</div>
+
+<div class="slideshow">
+<img class="slide active-slide" src="photo1.jpg">
+<img class="slide" src="photo2.jpg">
+<img class="slide" src="photo3.jpg">
+<img class="slide" src="photo4.jpg">
+</div>
+
+<button onclick="show('letter')">Read My Heart ❤️</button>
+</div>
+
+<!-- LETTER -->
+<div id="letter" class="section">
+<h2>My Letter For You 💌</h2>
+<div class="card">
+<p>
+My Dear Aastha,<br><br>
+Mujhe pata hai maine tumhe hurt kiya... aur mujhe uska bahut regret hai.
+Long distance already tough hai, aur maine aur difficult bana diya.
+<br><br>
+But trust me Bebu... I really love you ❤️
+Please ek chance aur de do.
+<br><br>
+Tumhari smile hi meri happiness hai 😊
+</p>
+</div>
+</div>
+
+<!-- GALLERY -->
+<div id="gallery" class="section">
+<h2>Our Memories 📸</h2>
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+<img src="photo4.jpg">
+<p>👉 Photos ko same folder me rakho (photo1.jpg...)</p>
+</div>
+
+<!-- PROMISE -->
+<div id="promise" class="section">
+<h2>My Promises To You, Bebu 💖</h2>
+<div class="card">Kabhi ignore nahi karunga 🙏</div>
+<div class="card">Hamesha tumhare saath rahunga ❤️</div>
+<div class="card">Tumhe hamesha khush rakhne ki koshish karunga 😊</div>
+<div class="card">Trust aur respect hamesha dunga 💯</div>
+</div>
+
+<script>
+function show(id){
+document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+}
+
+// HEARTS
+function createHeart(){
+const heart=document.createElement('div');
+heart.classList.add('heart');
+heart.innerHTML='❤️';
+heart.style.left=Math.random()*100+'vw';
+heart.style.fontSize=(Math.random()*20+10)+'px';
+document.body.appendChild(heart);
+setTimeout(()=>{heart.remove()},5000);
+}
+setInterval(createHeart,300);
+
+// SLIDESHOW
+let slideIndex=0;
+const slides=document.querySelectorAll('.slide');
+function showSlides(){
+slides.forEach(s=>s.classList.remove('active-slide'));
+slideIndex=(slideIndex+1)%slides.length;
+slides[slideIndex].classList.add('active-slide');
+}
+setInterval(showSlides,2000);
+
+// POPUP AUTO SHOW
+window.onload=function(){
+setTimeout(()=>{
+document.getElementById('popup').classList.add('show-popup');
+},1500);
+}
+
+function closePopup(){
+document.getElementById('popup').classList.remove('show-popup');
+}
+</script>
+
+</body>
+</html>
